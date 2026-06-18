@@ -1,0 +1,198 @@
+import React, { useState, useEffect } from 'react';
+import { useNavigate, useSearchParams } from 'react-router-dom';
+import { Search, ArrowUpDown, Users, ChevronDown, Navigation, Plane, Calendar } from 'lucide-react';
+
+import LocationInput from './LocationInput';
+import ClassSelector from './ClassSelector';
+import TravellerSelector from './TravellerSelector';
+
+const TopSearchBar = ({ initialValues = {} }) => {
+  const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+
+  // Form state
+  const [source, setSource] = useState(initialValues.source || searchParams.get('source') || '');
+  const [destination, setDestination] = useState(initialValues.destination || searchParams.get('destination') || '');
+  const [departureDate, setDepartureDate] = useState(initialValues.date || searchParams.get('date') || '');
+  const [returnDate, setReturnDate] = useState(initialValues.returnDate || searchParams.get('returnDate') || '');
+  const [travelClass, setTravelClass] = useState(initialValues.class || searchParams.get('class') || 'Economy');
+  const [travellers, setTravellers] = useState({
+    adults: initialValues.passengers || parseInt(searchParams.get('passengers')) || 1,
+    children: 0,
+    infantsSeat: 0,
+    infantsLap: 0
+  });
+  const [showTravellerModal, setShowTravellerModal] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  const handleSwap = () => {
+    const temp = source;
+    setSource(destination);
+    setDestination(temp);
+  };
+
+  const getTravellerLabel = () => {
+    const parts = [];
+    if (travellers.adults > 0) parts.push(`${travellers.adults} Adult${travellers.adults > 1 ? 's' : ''}`);
+    if (travellers.children > 0) parts.push(`${travellers.children} Child${travellers.children > 1 ? 'ren' : ''}`);
+    return parts.join(', ') || '1 Adult';
+  };
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    setLoading(true);
+    const params = new URLSearchParams();
+    if (source) params.append('source', source);
+    if (destination) params.append('destination', destination);
+    if (departureDate) params.append('date', departureDate);
+    if (returnDate) params.append('returnDate', returnDate);
+    params.append('passengers', String(travellers.adults + travellers.children + travellers.infantsSeat + travellers.infantsLap));
+    if (travelClass && travelClass !== 'Economy') params.append('class', travelClass);
+
+    setTimeout(() => {
+      navigate(`/results/flights?${params.toString()}`);
+    }, 300);
+  };
+
+  return (
+    <div className="sticky top-0 z-50 bg-white shadow-md border-b border-gray-200">
+      <div className="max-w-7xl mx-auto px-4 py-3">
+        <form onSubmit={handleSearch} className="space-y-2">
+          {/* Row 1: Trip type, travellers, class */}
+          <div className="flex items-center gap-3">
+            {/* Trip Type (visual only for now) */}
+            <div className="relative">
+              <label className="block text-xs font-medium text-gray-500 mb-1">Trip type</label>
+              <button
+                type="button"
+                className="flex items-center gap-1 text-sm font-medium text-gray-700 hover:text-gray-900 px-2 py-1"
+              >
+                Round trip <ChevronDown className="w-4 h-4" />
+              </button>
+            </div>
+
+            {/* Travellers */}
+            <div className="relative flex-1 min-w-[200px]">
+              <label className="block text-xs font-medium text-gray-500 mb-1">Travellers</label>
+              <button
+                type="button"
+                onClick={() => setShowTravellerModal(true)}
+                className="w-full flex items-center justify-between px-3 py-2 text-sm border border-gray-300 rounded-lg bg-white hover:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors"
+              >
+                <span className="text-gray-900">{getTravellerLabel()}</span>
+                <ChevronDown className="w-4 h-4 text-gray-400" />
+              </button>
+            </div>
+
+            {/* Class */}
+            <div className="flex-1 min-w-[180px]">
+              <ClassSelector
+                value={travelClass}
+                onChange={setTravelClass}
+                compact={true}
+              />
+            </div>
+          </div>
+
+          {/* Row 2: FROM, SWAP, TO, Dates */}
+          <div className="flex items-center gap-2 flex-wrap">
+            {/* FROM */}
+            <div className="flex-1 min-w-[250px]">
+              <LocationInput
+                id="search-from"
+                value={source}
+                onChange={setSource}
+                placeholder="From"
+                label=""
+                required
+                showGps={true}
+                onGpsClick={detectLocation}
+                gpsLoading={gpsLoading}
+                compact={true}
+              />
+            </div>
+
+            {/* SWAP BUTTON */}
+            <button
+              type="button"
+              onClick={handleSwap}
+              className="mt-5 p-2 border border-gray-300 rounded-full hover:bg-gray-50 hover:border-blue-500 transition-colors"
+              title="Swap locations"
+            >
+              <ArrowUpDown className="w-4 h-4 text-gray-600" />
+            </button>
+
+            {/* TO */}
+            <div className="flex-1 min-w-[250px]">
+              <LocationInput
+                id="search-to"
+                value={destination}
+                onChange={setDestination}
+                placeholder="To"
+                label=""
+                required
+                showGps={false}
+                compact={true}
+              />
+            </div>
+
+            {/* Departure Date */}
+            <div className="min-w-[150px]">
+              <label className="block text-xs font-medium text-gray-500 mb-1">Departure</label>
+              <div className="relative">
+                <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+                <input
+                  type="date"
+                  value={departureDate}
+                  onChange={(e) => setDepartureDate(e.target.value)}
+                  required
+                  className="pl-9 pr-3 py-2 w-full text-sm border border-gray-300 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-500 transition-colors"
+                />
+              </div>
+            </div>
+
+            {/* Return Date */}
+            <div className="min-w-[150px]">
+              <label className="block text-xs font-medium text-gray-500 mb-1">Return</label>
+              <div className="relative">
+                <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+                <input
+                  type="date"
+                  value={returnDate}
+                  onChange={(e) => setReturnDate(e.target.value)}
+                  className="pl-9 pr-3 py-2 w-full text-sm border border-gray-300 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-500 transition-colors"
+                />
+              </div>
+            </div>
+
+            {/* Search Button */}
+            <div className="self-end mb-0.5">
+              <button
+                type="submit"
+                disabled={loading}
+                className="flex items-center gap-2 px-6 py-2 bg-gradient-to-r from-blue-600 to-blue-500 text-white rounded-full font-medium text-sm hover:from-blue-700 hover:to-blue-600 shadow-sm hover:shadow transition-all disabled:opacity-70"
+              >
+                {loading ? (
+                  <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                ) : (
+                  <Search className="w-4 h-4" />
+                )}
+                <span>Search</span>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      {/* Traveller Selector Modal */}
+      <TravellerSelector
+        isOpen={showTravellerModal}
+        onClose={() => setShowTravellerModal(false)}
+        onSave={setTravellers}
+        initialValues={travellers}
+      />
+    </div>
+  );
+};
+
+export default TopSearchBar;
