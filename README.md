@@ -1,3 +1,5 @@
+https://github.com/user-attachments/assets/f71c832b-e79a-4b5b-ae19-7df639f7072e
+
 # TravelBuddy - Full Stack Travel Booking Web Application
 
 Welcome to TravelBuddy! This is a MakeMyTrip clone built entirely with the MERN stack (MongoDB, Express, React, Node.js) and using standard JavaScript (.js / .jsx files as requested).
@@ -145,6 +147,6 @@ npm install google-auth-library
 
 
 
-https://github.com/user-attachments/assets/f71c832b-e79a-4b5b-ae19-7df639f7072e
+
 
 
