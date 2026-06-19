@@ -115,3 +115,30 @@ Frontend
 npm install @react-oauth/google jwt-decode
 Backend
 npm install google-auth-library
+
+
+<img width="1919" height="1079" alt="Screenshot 2026-06-19 181427" src="https://github.com/user-attachments/assets/8e97319b-f68d-4631-9a82-5315d95bf3bc" />
+<img width="1919" height="1079" alt="Screenshot 2026-06-19 181455" src="https://github.com/user-attachments/assets/e5f68a8c-3c1f-4d8e-a37f-d461252ee47c" />
+<img width="1919" height="1079" alt="Screenshot 2026-06-19 181510" src="https://github.com/user-attachments/assets/19de8805-c3da-470d-8bb5-b3efe160179a" />
+<img width="1919" height="1079" alt="Screenshot 2026-06-19 181525" src="https://github.com/user-attachments/assets/e1c2566c-fb4b-43a3-add9-36a3da84b743" />
+<img width="1919" height="1079" alt="Screenshot 2026-06-19 181536" src="https://github.com/user-attachments/assets/000ad43a-df12-4fc5-86e5-118f95a3f45c" />
+<img width="1919" height="1079" alt="Screenshot 2026-06-19 181549" src="https://github.com/user-attachments/assets/cbe6e47b-7e58-4e93-8bab-33045678e652" />
+<img width="1919" height="1079" alt="Screenshot 2026-06-19 181559" src="https://github.com/user-attachments/assets/e9bf1070-f905-40dc-8456-9c7fe35d6730" />
+<img width="1919" height="1079" alt="Screenshot 2026-06-19 181609" src="https://github.com/user-attachments/assets/0cd5ee91-1627-4569-b4a8-be1f997bb64e" />
+<img width="1919" height="1079" alt="Screenshot 2026-06-19 181619" src="https://github.com/user-attachments/assets/eab3df36-ca06-4061-84c3-a015d807b606" />
+<img width="1919" height="1079" alt="Screenshot 2026-06-19 181628" src="https://github.com/user-attachments/assets/0a0ce9cd-2583-482e-8ffe-fd007c3c7706" />
+<img width="1919" height="1079" alt="Screenshot 2026-06-19 181638" src="https://github.com/user-attachments/assets/d156b29f-8f50-48a8-9db4-ae85728d6eb1" />
+<img width="1919" height="1079" alt="Screenshot 2026-06-19 181649" src="https://github.com/user-attachments/assets/f4481918-cdc7-40ef-a0a4-4801b5e8dc65" />
+<img width="1919" height="1079" alt="Screenshot 2026-06-19 181700" src="https://github.com/user-attachments/assets/939aff26-fe1a-483f-90a8-5949942740f6" />
+<img width="1919" height="1079" alt="Screenshot 2026-06-19 181709" src="https://github.com/user-attachments/assets/d8c1ea6f-b55e-4db1-aef9-60a320f502c5" />
+<img width="1919" height="1079" alt="Screenshot 2026-06-19 181719" src="https://github.com/user-attachments/assets/ef970f87-5f31-4220-be71-6dc3b19b37fe" />
+<img width="1919" height="1079" alt="Screenshot 2026-06-19 181757" src="https://github.com/user-attachments/assets/68208e96-c172-42f3-8174-1dbc97e7fb16" />
+<img width="1919" height="1079" alt="Screenshot 2026-06-19 181822" src="https://github.com/user-attachments/assets/eaa37944-072c-41ec-9e31-1dcd5bbdbbf1" />
+<img width="1919" height="1079" alt="Screenshot 2026-06-19 181830" src="https://github.com/user-attachments/assets/6bdfb311-a34c-4509-ac2d-bb3e36e065ec" />
+<img width="1919" height="1079" alt="Screenshot 2026-06-19 181841" src="https://github.com/user-attachments/assets/8bcd7f7f-b227-42e3-a9ab-acaf170d71d4" />
+<img width="1919" height="1079" alt="Screenshot 2026-06-19 181853" src="https://github.com/user-attachments/assets/9d79f3d2-9310-4f45-a4ef-5cc1229b01d6" />
+<img width="1919" height="1079" alt="Screenshot 2026-06-19 181902" src="https://github.com/user-attachments/assets/ecd8560d-a0e7-4707-9609-0036341d679c" />
+<img width="1919" height="1079" alt="Screenshot 2026-06-19 181913" src="https://github.com/user-attachments/assets/c6b82ecf-f3c8-4925-b697-13b17e287dfe" />
+<img width="1919" height="1079" alt="Screenshot 2026-06-19 181930" src="https://github.com/user-attachments/assets/ea2278dd-773d-408f-8d20-530f5f3eb0c6" />
+<img width="1919" height="1079" alt="Screenshot 2026-06-19 181955" src="https://github.com/user-attachments/assets/509a482c-323b-452d-8041-361f9fe1ea37" />
+<img width="1919" height="1079" alt="Screenshot 2026-06-19 182005" src="https://github.com/user-attachments/assets/fc5f07c2-8760-442c-b013-34f180b8e6fc" />
